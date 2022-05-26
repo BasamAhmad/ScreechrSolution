@@ -27,9 +27,9 @@ namespace Screechr.Api.Providers
         {
             if (!_dbContext.Users.Any())
             {
-                _dbContext.Users.Add(new User() { Id = 1, FirstName = "Admin", LastName = "User", Username = "test", CreatedDate = new DateTimeOffset(2022, 05, 25, 0, 0, 0, 0, new TimeSpan()), ModifiedDate = new DateTimeOffset(), Password = "test" });
-                _dbContext.Users.Add(new User() { Id = 2, FirstName = "Basam", LastName = "Ahmad", Username = "basam", CreatedDate = new DateTimeOffset(2022, 05, 25, 0, 0, 0, 0, new TimeSpan()), ModifiedDate = new DateTimeOffset(), Password = "test" });
-                _dbContext.Users.Add(new User() { Id = 3, FirstName = "John", LastName = "Smith", Username = "john", CreatedDate = new DateTimeOffset(2022, 05, 25, 0, 0, 0, 0, new TimeSpan()), ModifiedDate = new DateTimeOffset(), Password = "123" });
+                _dbContext.Users.Add(new User() { Id = 1, FirstName = "Admin", LastName = "User", Username = "test", ProfileImageUri="", CreatedDate = new DateTimeOffset(2022, 05, 25, 0, 0, 0, 0, new TimeSpan()), ModifiedDate = new DateTimeOffset(), Password = "test" });
+                _dbContext.Users.Add(new User() { Id = 2, FirstName = "Basam", LastName = "Ahmad", Username = "basam", ProfileImageUri = "https://www.linkedin.com/in/basam-ahmad/", CreatedDate = new DateTimeOffset(2022, 05, 25, 0, 0, 0, 0, new TimeSpan()), ModifiedDate = new DateTimeOffset(), Password = "test" });
+                _dbContext.Users.Add(new User() { Id = 3, FirstName = "John", LastName = "Smith", Username = "john", ProfileImageUri = "", CreatedDate = new DateTimeOffset(2022, 05, 25, 0, 0, 0, 0, new TimeSpan()), ModifiedDate = new DateTimeOffset(), Password = "123" });
                 _dbContext.SaveChanges();
             }
         }

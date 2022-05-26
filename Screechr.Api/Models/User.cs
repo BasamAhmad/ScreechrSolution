@@ -1,6 +1,7 @@
 namespace Screechr.Api.Models;
 
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
@@ -37,6 +38,7 @@ public class User
     [StringLength(100, ErrorMessage = "LastName cannot be more than 100 character")]
     public string LastName { get; set; }
 
+    public string? ProfileImageUri { get; set; }
     /// <summary>
     /// Gets or sets the created date.
     /// </summary>
@@ -53,5 +55,7 @@ public class User
     /// Gets or sets the password.
     /// </summary>
     [JsonIgnore]
-    public string Password { get; set; }
+    [DataType(DataType.Password)]
+    [DefaultValue("ScreechrPassword")]
+    public string? Password { get; set; }
 }
