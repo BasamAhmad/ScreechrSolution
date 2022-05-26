@@ -13,15 +13,17 @@ using Screechr.Api.Models;
 public class AuthenticateController : ControllerBase
 {
     private readonly IUserAuthService _userAuthService;
+    private readonly IScreechrsProvider _screechrsProvider;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AuthenticateController"/> class.
     /// </summary>
     /// <param name="screechrsProvider">The screechrs provider.</param>
     /// <param name="userAuthService">The user auth service.</param>
-    public AuthenticateController(IUserAuthService userAuthService) 
+    public AuthenticateController(IUserAuthService userAuthService, IScreechrsProvider screechrsProvider) 
     {
         _userAuthService = userAuthService;
+        _screechrsProvider = screechrsProvider;
     }
 
     /// <summary>
