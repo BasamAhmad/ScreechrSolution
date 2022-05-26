@@ -1,22 +1,5 @@
 # Screechr Requirements
 
-**[1 Scenario]**
-
-[2 Authentication]()
-
-[3 Authorization]()
-
-[4 Object Models]()
-
-[5 User Profile]()
-
-[6 Screech]()
-
-[7 Demo API Functionality]()
-
-**Instructions **
-
-
 # Scenario
 
 _screechr_ is going to be a multi-platform social media app that just happens to be a lot like Twitter; except you screech, not tweet. Revolutionary stuff.
