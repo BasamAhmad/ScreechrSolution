@@ -22,7 +22,7 @@ services.AddScoped<IScreechrsProvider, ScreechrsProvider>();
 services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 services.AddDbContext<ScreechrsDbContext>(options =>
     {
-        options.UseInMemoryDatabase("Users");
+        options.UseInMemoryDatabase("Screechrs");
     });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

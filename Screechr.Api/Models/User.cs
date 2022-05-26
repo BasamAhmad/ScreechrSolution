@@ -20,7 +20,7 @@ public class User
     /// Gets or sets the username.
     /// </summary>
     [Required(ErrorMessage = "Username is Required")]
-    [StringLength(80, ErrorMessage = "Username cannot be more than 100 character")]
+    [StringLength(80, ErrorMessage = "Username cannot be more than 80 character")]
     public string Username { get; set; }
 
     /// <summary>

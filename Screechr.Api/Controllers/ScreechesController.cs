@@ -7,81 +7,81 @@ using Screechr.Api.Models;
 namespace Screechr.Api.Controllers
 {
     /// <summary>
-    /// The users controller.
+    /// The screeches controller.
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class ScreechesController : ControllerBase
     {
         private readonly ScreechrsDbContext _context;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UsersController"/> class.
+        /// Initializes a new instance of the <see cref="ScreechesController"/> class.
         /// </summary>
         /// <param name="context">The context.</param>
-        public UsersController(ScreechrsDbContext context)
+        public ScreechesController(ScreechrsDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Users1
+        // GET: api/Screeches
         /// <summary>
-        /// Gets the users.
+        /// Gets the screechs.
         /// </summary>
         /// <returns>A Task.</returns>
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<Screech>>> GetScreechs()
         {
-          if (_context.Users == null)
-          {
-              return NotFound();
-          }
-            return await _context.Users.ToListAsync();
+            if (_context.Screechs == null)
+            {
+                return NotFound();
+            }
+            return await _context.Screechs.ToListAsync();
         }
 
-        // GET: api/Users1/5
+        // GET: api/Screeches/5
         /// <summary>
-        /// Gets the user.
+        /// Gets the screech.
         /// </summary>
         /// <param name="id">The id.</param>
         /// <returns>A Task.</returns>
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<Screech>> GetScreech(int id)
         {
-          if (_context.Users == null)
-          {
-              return NotFound();
-          }
-            var user = await _context.Users.FindAsync(id);
+            if (_context.Screechs == null)
+            {
+                return NotFound();
+            }
+            var screech = await _context.Screechs.FindAsync(id);
 
-            if (user == null)
+            if (screech == null)
             {
                 return NotFound();
             }
 
-            return user;
+            return screech;
         }
 
-        // PUT: api/Users1/5
+        // PUT: api/Screeches/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         /// <summary>
-        /// Puts the user.
+        /// Puts the screech.
         /// </summary>
         /// <param name="id">The id.</param>
-        /// <param name="user">The user.</param>
+        /// <param name="screech">The screech.</param>
         /// <returns>A Task.</returns>
         [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> PutUser(int id, User user)
+        public async Task<IActionResult> PutScreech(int id, Screech screech)
         {
-            if (id != user.Id)
+            if (id != screech.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(user).State = EntityState.Modified;
+            _context.Entry(screech).State = EntityState.Modified;
 
             try
             {
@@ -89,7 +89,7 @@ namespace Screechr.Api.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!ScreechExists(id))
                 {
                     return NotFound();
                 }
@@ -102,61 +102,56 @@ namespace Screechr.Api.Controllers
             return NoContent();
         }
 
-        // POST: api/Users1
+        // POST: api/Screeches
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         /// <summary>
-        /// Posts the user.
+        /// Posts the screech.
         /// </summary>
-        /// <param name="user">The user.</param>
+        /// <param name="screech">The screech.</param>
         /// <returns>A Task.</returns>
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<Screech>> PostScreech(Screech screech)
         {
-          if (_context.Users == null)
-          {
-              return Problem("Entity set 'ScreechrsDbContext.Users'  is null.");
-          }
-            _context.Users.Add(user);
+            if (_context.Screechs == null)
+            {
+                return Problem("Entity set 'ScreechrsDbContext.Screechs'  is null.");
+            }
+            _context.Screechs.Add(screech);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return CreatedAtAction("GetScreech", new { id = screech.Id }, screech);
         }
 
-        // DELETE: api/Users1/5
+        // DELETE: api/Screeches/5
         /// <summary>
-        /// Deletes the user.
+        /// Deletes the screech.
         /// </summary>
         /// <param name="id">The id.</param>
         /// <returns>A Task.</returns>
         [HttpDelete("{id}")]
         [Authorize]
-        public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> DeleteScreech(int id)
         {
-            if (_context.Users == null)
+            if (_context.Screechs == null)
             {
                 return NotFound();
             }
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
+            var screech = await _context.Screechs.FindAsync(id);
+            if (screech == null)
             {
                 return NotFound();
             }
 
-            _context.Users.Remove(user);
+            _context.Screechs.Remove(screech);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        /// <summary>
-        /// Users the exists.
-        /// </summary>
-        /// <param name="id">The id.</param>
-        /// <returns>A bool.</returns>
-        private bool UserExists(int id)
+        private bool ScreechExists(int id)
         {
-            return (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Screechs?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
