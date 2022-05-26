@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.OData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Screechr.Api.Entities;
@@ -12,6 +13,11 @@ var services = builder.Services;
 // Add services to the container.
 services.AddCors();
 services.AddControllers();
+
+// Add ODate to query the get screeches API and limit the retrieved result
+services.AddControllers().AddOData(options => options.Select().Filter().OrderBy().SkipToken()
+.SetMaxTop(500)
+.Expand());
 
 // configure strongly typed settings object
 services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));

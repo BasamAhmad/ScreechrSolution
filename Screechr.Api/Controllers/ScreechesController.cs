@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 using Microsoft.EntityFrameworkCore;
 using Screechr.Api.Entities;
 using Screechr.Api.Helpers;
@@ -31,12 +32,20 @@ namespace Screechr.Api.Controllers
         /// <returns>A Task.</returns>
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<IEnumerable<Screech>>> GetScreechs()
+        [EnableQuery]
+        public async Task<ActionResult<IEnumerable<Screech>>> GetScreechs(
+            string? select,
+            string? filter,
+            string orderby = "CreatedDate desc",
+            int top = 50,
+            int skip = 0
+        )
         {
             if (_context.Screechs == null)
             {
                 return NotFound();
             }
+            // Default sort order is creation date in descending order
             return await _context.Screechs.ToListAsync();
         }
 

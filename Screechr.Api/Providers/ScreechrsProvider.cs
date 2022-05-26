@@ -32,6 +32,14 @@ namespace Screechr.Api.Providers
                 _dbContext.Users.Add(new User() { Id = 3, FirstName = "John", LastName = "Smith", Username = "john", ProfileImageUri = "", CreatedDate = new DateTimeOffset(2022, 05, 25, 0, 0, 0, 0, new TimeSpan()), ModifiedDate = new DateTimeOffset(), Password = "123" });
                 _dbContext.SaveChanges();
             }
+            if (!_dbContext.Screechs.Any())
+            {
+                _dbContext.Screechs.Add(new Screech() { Id = 1, CreatorUserId = 1, Content = "First screech ever", CreatedDate = new DateTimeOffset(2022, 05, 25, 0, 0, 0, 0, new TimeSpan()), ModifiedDate = new DateTimeOffset() });
+                _dbContext.Screechs.Add(new Screech() { Id = 2, CreatorUserId = 1, Content = "Second screech", CreatedDate = new DateTimeOffset(2022, 05, 25, 0, 0, 0, 0, new TimeSpan()), ModifiedDate = new DateTimeOffset() });
+                _dbContext.Screechs.Add(new Screech() { Id = 3, CreatorUserId = 2, Content = "Basam's Screech", CreatedDate = new DateTimeOffset(2022, 05, 25, 0, 0, 0, 0, new TimeSpan()), ModifiedDate = new DateTimeOffset() });
+                _dbContext.Screechs.Add(new Screech() { Id = 4, CreatorUserId = 3, Content = "John's Screech", CreatedDate = new DateTimeOffset(2022, 05, 25, 0, 0, 0, 0, new TimeSpan()), ModifiedDate = new DateTimeOffset() });
+                _dbContext.SaveChanges();
+            }
         }
 
         /// <summary>
